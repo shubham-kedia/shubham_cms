@@ -1,15 +1,16 @@
+<%= error_messages_for(@page) %>
 <table summary="page form fields">
 <tr> 
 	<th><%= f.label(:name,"Name") %></th>
 	<td><%= f.text_field(:name, placeholder: 'Enter Name') %></td>
 </tr>
 <tr> 
-	<th><%= f.label(:subject_id,"Subject ID") %></th>
-	<td><%= f.text_field(:subject_id, placeholder: 'Enter Subject ID') %></td>
+	<th><%= f.label(:subject_id,"Subject") %></th>
+	<td><%= f.select(:subject_id, @subjects.map{|s| [s.name,s.id]}) %></td>
 </tr>
 <tr>
 	<th><%= f.label(:position) %></th>
-	<td><%= f.text_field(:position, placeholder: 'Enter Position') %></td>
+	<td><%= f.select(:position, 1..@page_count) %></td>
 </tr>
 <tr>
 	<th><%= f.label(:permalink) %></th>

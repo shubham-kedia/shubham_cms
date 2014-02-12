@@ -1,7 +1,7 @@
 <%= link_to("<<Back to List",{:action => 'index'}, :class => 'back-link')%>
 
 <div class="Pages Edit">
-	<h3>Create new page</h3>
+	<h2>Create new page</h2>
 
 <%= form_for(:page,:url =>{:action => 'create'})  do |f| %>
 <%= render(:partial => "form", :locals => {:f => f}) %>

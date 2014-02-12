@@ -5,7 +5,7 @@
 <table>
 	<tr class="header">
 		<th>&nbsp;&nbsp;</th>
-		<th>Subject ID</th>
+		<th>Subject</th>
 		<th>Page</th>
 		<th>Permalink</th>
 		<th>Visible</th>
@@ -13,9 +13,9 @@
 		<th>Actions</th>
 	</tr>
     <% @pages.each do |page| %>
-    <tr>
+    <tr class="<%= cycle('odd','even') %>">
     	<td class="center"><%= page.position %></td>
-    	<td class="center"><%= page.subject_id %></td>
+    	<td class="center"><%= page.subject.name if page.subject %></td>
     	<td><%= page.name %></td>
     	<td ><%= page.permalink %></td>
     	<td class="center"><%= status_tag(page.visible) %></td>

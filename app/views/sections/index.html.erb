@@ -13,7 +13,7 @@
 		<th>Actions</th>
 	</tr>
     <% @sections.each do |section| %>
-    <tr>
+    <tr class="<%= cycle('odd','even') %>">
     	<td class="center"><%= section.position %></td>
     	<td class="center"><%= section.page_id %></td>
     	<td><%= section.name %></td>

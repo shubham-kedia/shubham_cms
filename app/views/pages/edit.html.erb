@@ -1,7 +1,8 @@
+<% @page_title = "Update Pages" %>
 <%= link_to("<<Back to List",{:action => 'index'}, :class => 'back-link')%>
 
-<div class="Pages Edit">
-	<h3>Update page Details</h3>
+<div class="pages edit">
+	<h2>Update page Details</h2>
 
 <%= form_for(:page,:url =>{:action => 'update', :id => @page.id})  do |f| %>
 <%= render(:partial => "form", :locals => {:f => f}) %>
@@ -16,7 +17,3 @@
 </div>
 <% end %>
 </div>
-<%=  %>
-<%=  %>
-<%=  %>
-<%=  %>
