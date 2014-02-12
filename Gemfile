@@ -35,6 +35,9 @@ end
 # Use ActiveModel has_secure_password
  gem 'bcrypt-ruby', '~> 3.1.2'
 
+# Generates code
+ gem 'nifty-generators', '>= 0.4.2'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

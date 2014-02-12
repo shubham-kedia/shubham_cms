@@ -1,19 +1,14 @@
 SimpleCms::Application.routes.draw do
-  get "sections/index"
-  get "sections/show"
-  get "sections/new"
-  get "sections/edit"
-  get "sections/delete"
-  get "pages/index"
-  get "pages/show"
-  get "pages/new"
-  get "pages/edit"
-  get "pages/delete"
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
    root 'demo#index'
+
+   get 'admin',:to => "access#index"
+
    match ':controller(/:action(/:id))', :via => [:get,:post]
 
   # Example of regular route:
