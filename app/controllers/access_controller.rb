@@ -47,15 +47,5 @@ class AccessController < ApplicationController
   	flash[:notice] = "You are Now logged out."
 	redirect_to(:action => 'login')
   end
- 
-  def confirm_logged_in
-  	unless session[:user_id]
-  		flash[:notice] = "Please log in."
-  		redirect_to(:action => 'login')
-  		return false
-  	else
-  		return true
-  	end
-  end
 
 end
