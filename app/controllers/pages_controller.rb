@@ -3,9 +3,11 @@ class PagesController < ApplicationController
   layout "admin"
   
   before_action :confirm_logged_in
-
+  before_action :find_subject
   def index
-    @pages= Page.sorted
+    # @pages= Page.where(:subject_id => @subject.id).sorted
+    # or
+    @pages = @subject.pages.sorted
   end
 
   def show
@@ -64,6 +66,12 @@ class PagesController < ApplicationController
     def page_params
       params.require(:page).permit(:name,:subject_id,:visible,:permalink,:position)
       
+    end
+
+    def find_subject
+      if params[:id]
+        @subject = Subject.find(params[:id])
+      end
     end
 
 end

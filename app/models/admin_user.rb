@@ -9,10 +9,6 @@ class AdminUser < ActiveRecord::Base
   has_many :section_edits
   has_many :sections, :through => :section_edits
 
-  scope :sorted_first_name, lambda {order("admin_users.first_name ASC")}
-  scope :sorted_last_name, lambda {order("admin_users.last_name ASC")}
-  scope :sorted_by_id, lambda {order("admin_users.id ASC")}
-
   EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
   FORBIDDEN_USERNAMES=['shubhamkedia','admin','maryjane']
   # validates_presence_of :first_name
@@ -43,6 +39,15 @@ class AdminUser < ActiveRecord::Base
                     :confirmation => true
   validate :username_is_allowed
   # validate :no_users_wednesday, :on => :create
+
+  scope :sorted_first_name, lambda {order("admin_users.first_name ASC")}
+  scope :sorted_last_name, lambda {order("admin_users.last_name ASC")}
+  scope :sorted_by_id, lambda {order("admin_users.id ASC")}
+  scope :sorted, lambda {order("last_name ASC,first_name ASC")}
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 
   def username_is_allowed
     if FORBIDDEN_USERNAMES.include?(username)
