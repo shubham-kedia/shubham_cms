@@ -24,13 +24,13 @@
     	  <%= link_to("Show",{:action => 'show' , :id => admin_users.id},:class => 'action show') %>
     	  <%= link_to("Edit",{:action => 'edit' , :id => admin_users.id},:class => 'action edit') %>
     	  <%= link_to("Delete",{:action => 'delete' , :id => admin_users.id},:class => 'action delete') %>
-    	  </td>
+    	</td>
     </tr>
     <% end %>
 </table>
 <br>
-<%= form_for(:admin_sort,:url =>{:action => 'index'})  do |f| %>
-<%= f.select(:sort_type,{"sort by id" => 1,"sort by first_name" => 2,"sort by last_name" => 3} ,:options => {:selected => '2' }) %>
+<%= form_for(:admin_sort,:url => {:action => 'index'} )  do |f| %>
+<%= f.select(:sort_type,{"sort by id" => 1,"sort by first_name" => 2,"sort by last_name" => 3},:selected => params[:admin_sort][:sort_type]) %>
 <%= submit_tag("Sort") %>
 <% end %>
 </div>

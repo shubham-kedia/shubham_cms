@@ -8,17 +8,20 @@ class AdminUsersController < ApplicationController
 
   def index
 
-     @admin_users = AdminUser.sorted_by_id()
-     @a=params[:admin_sort][:sort_type]
-      if params[:admin_sort][:sort_type]=='1'
-        @admin_users = AdminUser.sorted_by_id()
-      else 
-        if params[:admin_sort][:sort_type]=='2'
-          @admin_users = AdminUser.sorted_first_name()
-        else
-          @admin_users = AdminUser.sorted_last_name()
+    if params[:admin_sort].nil? 
+      @admin_users = AdminUser.sorted_by_id
+    
+    else
+        if params[:admin_sort][:sort_type]=='1'
+          @admin_users = AdminUser.sorted_by_id
+        else 
+          if params[:admin_sort][:sort_type]=='2'
+            @admin_users = AdminUser.sorted_first_name
+          else
+            @admin_users = AdminUser.sorted_last_name
+          end
         end
-      end
+    end
   end
     
 
