@@ -15,7 +15,7 @@ class PagesController < ApplicationController
   end
 
   def new
-    @page= Page.new()
+    @page= Page.new({:subject_id => @subject.id})
     @subjects= Subject.order('position ASC')
     @page_count = Page.count +1
   end
@@ -23,7 +23,7 @@ class PagesController < ApplicationController
   def create
     if @page=Page.new(page_params).save
        flash[:notice] = "Page Created Succesfully."
-       redirect_to(:action => 'index')
+       redirect_to(:action => 'index',:subject_id => @subject.id)
     else
        @subjects= Subject.order('position ASC')
        @page_count = Page.count +1
@@ -42,7 +42,7 @@ class PagesController < ApplicationController
   def update
     if @page=Page.find(params[:id]).update_attributes(page_params)
        flash[:notice] = "Page updated Succesfully."
-       redirect_to(:action => 'show', :id => params[:id])
+       redirect_to(:action => 'show', :id => params[:id], :subject_id => @subject.id)
     else
        @subjects= Subject.order('position ASC')
        @page_count = Page.count
@@ -59,7 +59,7 @@ class PagesController < ApplicationController
   def destroy
      page = Page.find(params[:id]).destroy
      flash[:notice] = "Page '#{page.name}' Destroyed Succesfully."
-     redirect_to(:action => 'index')
+     redirect_to(:action => 'index',:subject_id => @subject.id)
   end 
 
   private
@@ -69,8 +69,8 @@ class PagesController < ApplicationController
     end
 
     def find_subject
-      if params[:id]
-        @subject = Subject.find(params[:id])
+      if params[:subject_id]
+        @subject = Subject.find(params[:subject_id])
       end
     end
 

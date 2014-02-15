@@ -6,7 +6,7 @@
 </tr>
 <tr> 
 	<th><%= f.label(:page_id,"Page ID") %></th>
-	<td><%= f.text_field(:page_id, placeholder: 'Enter Page ID') %></td>
+	<td><%= f.select(:page_id, @pages.map{|s| [s.name,s.id]}) %></td>
 </tr>
 <tr>
 	<th><%= f.label(:position) %></th>
